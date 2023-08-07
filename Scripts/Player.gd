@@ -21,8 +21,10 @@ func _physics_process(delta) -> void:
 		STATES.MOVING: movingState(delta)
 
 
+
 func idleState(delta) -> void:
 	var _i = readMovement()
+	readButtons()
 	if _i != Vector2.ZERO:
 		state = STATES.MOVING
 	else:
@@ -31,11 +33,20 @@ func idleState(delta) -> void:
 
 func movingState(delta) -> void:
 	var _i = readMovement()
+	readButtons()
 	if _i != Vector2.ZERO:
 		lastVelocity = _i
 		velocity = move_and_slide(_i * MAX_SPEED)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, delta)
+
+
+func readButtons() -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		for child in get_children():
+			if child.has_method("shoot"):
+				child.shoot()
+
 
 
 func readMovement() -> Vector2:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://images/jyjaxea-title.png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
 resource_name = "StarfieldShader"
@@ -41,7 +42,7 @@ void fragment() {
 // Alternatively you can comment out the below line and add a new uniform above as:
 // uniform float time = 10000.0;
 // You can then update the time uniform from your _physics_process function by adding or subtracting delta. You can also pause the scrolling by not changing the time uniform.
-	float time = 10000.0 + TIME;
+	float time = 20000.0 + TIME;
 
 // Comment out the following two lines if you are not applying the shader to a TextureRect:
 // COLOR = texture(TEXTURE,UV); // This line is only required if you are using a version of Godot before 4.0.
@@ -130,19 +131,23 @@ shader_param/base_scroll_speed = 0.05
 shader_param/additional_scroll_speed = 0.05
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 45, 117.5 )
+extents = Vector2( 94.5, 238 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 34.5, 118 )
+extents = Vector2( 87.75, 244.5 )
 
 [node name="GameWorld" type="Node2D"]
 
+[node name="BackgroundBezel" type="Sprite" parent="."]
+position = Vector2( 323, 242 )
+texture = ExtResource( 2 )
+
 [node name="BackgroundShader" type="ColorRect" parent="."]
 material = SubResource( 2 )
-margin_left = 94.0
-margin_top = 235.0
-margin_right = 322.0
-margin_bottom = 389.0
+margin_left = 192.0
+margin_top = 480.0
+margin_right = 668.0
+margin_bottom = 754.0
 rect_rotation = -90.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -150,26 +155,26 @@ __meta__ = {
 }
 
 [node name="LeftBumper" type="StaticBody2D" parent="."]
+visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBumper"]
-position = Vector2( 47, 120.5 )
+position = Vector2( 96.5, 241 )
 shape = SubResource( 3 )
 
 [node name="RightBumper" type="StaticBody2D" parent="."]
+visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBumper"]
-position = Vector2( 282.5, 120 )
+position = Vector2( 551.75, 243.5 )
 shape = SubResource( 4 )
 
-[node name="Node2D" type="Node2D" parent="RightBumper"]
-
-[node name="Player" parent="RightBumper/Node2D" instance=ExtResource( 1 )]
-position = Vector2( 125, 193 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 328, 326 )

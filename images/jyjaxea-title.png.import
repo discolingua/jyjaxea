@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/horse1_61.png-c3d66dd5a8c6f7ccca3b7809df0fedf8.stex"
+path="res://.import/jyjaxea-title.png-5cf1643b11c52c9031d3b9b76d1b9788.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/horse1_61.png"
-dest_files=[ "res://.import/horse1_61.png-c3d66dd5a8c6f7ccca3b7809df0fedf8.stex" ]
+source_file="res://images/jyjaxea-title.png"
+dest_files=[ "res://.import/jyjaxea-title.png-5cf1643b11c52c9031d3b9b76d1b9788.stex" ]
 
 [params]
 

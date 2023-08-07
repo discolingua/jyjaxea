@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Scripts/Bullet.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Mob",
 "language": "GDScript",
@@ -18,22 +23,28 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scripts/Player.gd"
+}, {
+"base": "Area2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Scripts/Weapon.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "Mob": "",
-"Player": ""
+"Player": "",
+"Weapon": ""
 }
 
 [application]
 
 config/name="Inherit-test"
 run/main_scene="res://Scenes/GameWorld.tscn"
-config/icon="res://icon.png"
 
 [display]
 
-window/size/width=320
-window/size/height=240
+window/size/width=640
+window/size/height=480
 window/size/resizable=false
 window/size/test_width=640
 window/size/test_height=480
