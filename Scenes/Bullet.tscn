@@ -20,4 +20,5 @@ shape = SubResource( 1 )
 process_mode = 0
 autostart = true
 
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="BulletLifeTimer" to="." method="_on_BulletLifeTimer_timeout"]

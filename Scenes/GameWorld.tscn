@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://images/jyjaxea-title.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/RedShip.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Shader" id=1]
 resource_name = "StarfieldShader"
@@ -178,3 +179,6 @@ shape = SubResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 328, 326 )
+
+[node name="RedShip" parent="." instance=ExtResource( 3 )]
+position = Vector2( 273, 120 )

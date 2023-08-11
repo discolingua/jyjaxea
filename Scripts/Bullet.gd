@@ -12,6 +12,11 @@ func _ready():
 func _physics_process(_delta) -> void:
 	position += velocity
 
+func _on_Bullet_body_entered(_body:RedShip) -> void:
+	print("hit from bullet")
+	_body.queue_free()
+	queue_free()
+
 
 # despawn bullet when it's gone offscreen
 func _on_BulletLifeTimer_timeout():
