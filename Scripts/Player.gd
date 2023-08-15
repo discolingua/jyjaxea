@@ -1,11 +1,15 @@
-# Player.gd
+# Player ship
 extends Mob
 
 class_name Player
 
 enum STATES {IDLE, MOVING, SHOOTING}
 
+const MAX_BULLETS = 3
 const MAX_SPEED = 100
+
+var bulletPool : int = 0 setget setBulletPool
+var bulletMax : bool = false
 
 var velocity : Vector2 = Vector2.ZERO
 var lastVelocity : Vector2 = Vector2.ZERO
@@ -13,6 +17,7 @@ var lastVelocity : Vector2 = Vector2.ZERO
 var state : int = STATES.IDLE
 
 func _ready() -> void:
+	print("player ready")
 	print(getHealth())
 
 func _physics_process(delta) -> void:
@@ -43,9 +48,11 @@ func movingState(delta) -> void:
 
 func readButtons() -> void:
 	if Input.is_action_just_pressed("ui_accept"):
-		for child in get_children():
-			if child.has_method("shoot"):
-				child.shoot()
+		if !self.bulletMax:
+			self.bulletPool += 1
+			for child in get_children():
+				if child.has_method("shoot"):
+					child.shoot()
 
 
 
@@ -58,3 +65,13 @@ func readMovement() -> Vector2:
 	# normalize vector fixes fast/distorted diagonals
 	_i = _i.normalized()
 	return _i
+
+
+func setBulletPool(value) -> void:
+	bulletPool = value
+	if bulletPool >= MAX_BULLETS:
+		bulletMax = true
+	else:
+		bulletMax = false
+	print (bulletPool)
+
