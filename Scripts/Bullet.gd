@@ -1,3 +1,4 @@
+# main bullet class
 extends Area2D
 
 class_name Bullet
@@ -6,12 +7,12 @@ const SPEED = 10
 
 var velocity : Vector2 = Vector2(0,SPEED * -1)
 
-func _ready():
-	print("bullet ready")
 
 func _physics_process(_delta) -> void:
 	position += velocity
 
+
+# hit enemy ship
 func _on_Bullet_body_entered(_body:RedShip) -> void:
 	print("hit from bullet")
 	_body.queue_free()
